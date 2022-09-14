@@ -1,4 +1,4 @@
-package com.inditech.activitysample
+package com.inditech.intentsample
 
 import org.junit.Test
 
