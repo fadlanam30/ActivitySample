@@ -7,25 +7,25 @@ import android.widget.TextView
 class HomePage : AppCompatActivity() {
 
     companion object {
-        const val EXTRA_EMAIL = "extra_email"
-        const val EXTRA_PASSWORD = "extra_password"
+        const val EXTRA_LOGIN = "extra_login"
     }
 
-    private lateinit var tvResultRec: TextView
-    private lateinit var tvResultRec2: TextView
-
+    private lateinit var tvResultEmail : TextView
+    private lateinit var tvResultPassword : TextView
+    private lateinit var tvResultStatus : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_page)
 
-        tvResultRec = findViewById(R.id.tvResultRec)
-        tvResultRec2 = findViewById(R.id.tvResultRec2)
+        tvResultEmail = findViewById(R.id.tv_ResultEmail)
+        tvResultPassword = findViewById(R.id.tv_ResultPassword)
+        tvResultStatus = findViewById(R.id.tv_ResultStatus)
+        val login = intent.getParcelableExtra<Login>(EXTRA_LOGIN) as Login
 
-        val email = intent.getStringExtra(EXTRA_EMAIL)!!
-        val password = intent.getStringExtra(EXTRA_PASSWORD)!!
+        tvResultEmail.text = "Email : ${login.email}"
+        tvResultPassword.text = "Password : ${login.password}"
+        tvResultStatus.text = "Status Login : ${login.statusLogin}"
 
-        tvResultRec.setText("Email : $email")
-        tvResultRec2.setText("Password : $password")
     }
 }
